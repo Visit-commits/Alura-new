@@ -1,142 +1,285 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alura</title>
+    <title>Atividade Alura - Marília de Dirceu</title>
     <style>
-    header{
-        background-color: rgb(73, 42, 6);
-        color: #ffffff;
-        text-align: center;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-    main{
-        background-color: rgb(255, 253, 253);
-        color: #000;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-    img {
-        width: 400px;
-        height: 600px;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f1ea;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px 10px;
+        }
+
+        header {
+            background-color: #492a06;
+            color: #ffffff;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            padding: 30px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+
+        main {
+            background-color: #ffffff;
+            color: #222;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 35px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .author-tag {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .hero-img-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px;
+            border-radius: 6px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            object-fit: cover;
+        }
+
+        h2 {
+            color: #492a06;
+            border-bottom: 2px solid #e6dcd0;
+            padding-bottom: 8px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .poem-block {
+            background-color: #faf7f2;
+            border-left: 4px solid #492a06;
+            padding: 15px 20px;
+            margin: 15px 0;
+            font-family: 'Georgia', serif;
+            white-space: pre-line;
+            border-radius: 0 6px 6px 0;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        .feedback-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .reaction-btn {
+            background-color: #f0f0f0;
+            border: 2px solid #ccc;
+            border-radius: 25px;
+            padding: 8px 18px;
+            font-size: 1rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .reaction-btn:hover {
+            background-color: #e2e2e2;
+        }
+
+        .reaction-btn.active-like {
+            background-color: #ffe6e6;
+            border-color: #ff4d4d;
+            color: #d60000;
+        }
+
+        .reaction-btn.active-dislike {
+            background-color: #e6f0ff;
+            border-color: #4d94ff;
+            color: #0056b3;
+        }
+
+        .footer-note {
+            display: block;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #777;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Atividade alura</h1>
-        <p>Conhecimento copartilhado materia</p>
+        <h1>Atividade Alura</h1>
+        <p>Conhecimento Compartilhado - Matéria de Literatura</p>
     </header>
+
     <main>
-        <div>
         <h2>Marília de Dirceu</h2>
-        <img src="data:image/jpeg;base64,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" alt="">
-        <p>Por: Kelvin</p>
-        <p>Marília de Dirceu é a obra mais famosa do arcadismo brasileiro escrita no século XVIII feita por Tomás Antônio Gonzaga. A obra reúne poemas líricos que falam sobre o amor entre o pastor Dirceu e a Marília que é Maria Dorotéia de Seixas.</p> 
-        <p>Biografia</p>
-        <p>Escrito por: M. Cavalgando Proença.
-        Tomás Antônio Gonzaga(1744-1809) nasceu na cidade do Porto, Portugal. Seu pai era um magistrado brasileiro, e sua mãe, do Porto. Com um ano tornou-se órfão de mãe e ficou possivelmente aos cuidados de alguma de suas tias, mas aos três anos de idade foi confiado a avó e a uma filha, brasileiras, que haviam chegado de Portugal. Aos sete anos foi para o Brasil. Depois de estudar em um Colégio Jesuíta, formou-se em Coimbra. Nomeado ouvidor da comarca de Vila Rica, foi para Minas Gerais.
-        No ano de 1752, o Dr. João Bernardo Gonzaga, Ouvidor-Geral de Pernambuco, leva para Recife o filho, aos sete anos. De onde estava foi mandado para a Bahia, onde iniciaria seus estudos. Rodrigues Lapa, pesquisou com proficiência a vida e a obra, rastreou-lhe a presença no colégio de Jesuítas, onde, possivelmente, vivia na casa de um primo, “sargento do regime de guarnição”. Parece que esteve no Rio de Janeiro, em casa de sua tia, Felipa Gonzaga, a mesma que foi para cuidar do seu sobrinho órfão. Mas não ficou, devido às condições financeiras do tio que eram difíceis no período. 
-        No Colégio Jesuíta onde vivia, em 1759, presenciou ao cerco do edifício, à dispersão e embarque do religiosos, “De noite, entre soldados de baioneta calada e armas apertadas”. E, aí, por motivo de força maior,  terminou o seu aprendizado oficial; mas não deve ter havido grande mudança no curso de seus estudos, pois teria com professor o ex-jesuíta Manuel Maciek, que lecionava a domicílio.
-        Desde 1759, o pai vivia na Bahia, onde era Intendente-Geral do Ouro; dois anos mais tarde, aos dezessete, Gonzaga viaja para Portugal, onde avistou Lisboa aos destroços, depois do terremoto. Provável que tenha se dirigido ao Porto, onde moravam os parentes maternos; em 1762, matriculava-se na universidade de Coimbra. Lá se faria um amigo, Inácio José de Alvarenga, dois anos mais adiantado dos estudos, e que estivera no Colégio dos Jesuítas do Rio.
-        Em 1768, Tomás Antônio Gonzaga completava o curso e logo começa a preparar uma tese para habilitar-se ao cargo de professor. O título da tese é Direito Natural, é o autor dedicado ao Marquês de  Pombal, amigo de seu pai, que muito o orientou é apoiou nesse trabalho.
-        Quando D. Maria I sobe ao trono, o futuro inconfidência, que contra ela se injúria e em nome dela seria julgado e punido, compõe uma ode, com o título espichado como era do tom: “Congratulações com o Povo Português na Feliz Aclamação da Muita Alta e Muito Poderosa Soberania D. Maria I, Nossa Senhora”. A epígrafe era de Virgílio: “  …sentada em um trono muito elevado, cercada de homens diárias, distribuía justiça, ditava leis…” Não assim traduzido, mas em latim sonoro: “Saepta armis solioque…”
-        Nem tão excepcional pelo valor, que mereça a longa referência, essa ode, cronologicamente, parece marcar a sua renúncia à carreira de magistério e a decisão de entrar para a magistratura. Assim é que, em 1779, está em Beja, vivendo obscurantismo; três anos depois para o Brasil. Promotor curioso: antes de vir, torna-se amigo do Visconde de Barbacena, o mesmo que o mandaria prender como inconfidência.
-        Empossado no cargo, encontra, em São João del Rei, o colega de Coimbra, Alvarenga Peixoto, através dele chegando ao convívio e amizade de Cláudio Manuel da Costa.
-        A vida de um poeta merece tratamento mais minucioso pontos em que lhe esclarece ou reflete a obra; mas, no caso particular de Gonzaga, sua participação no primeiro movimento visando a independência nacional justifica plenamente o trabalho linear, embora resumido, que estamos dando à Biografia. No prefácio escrito para o volume Poesias e Cartas Chilenas, do I.N.L, 1952, Rodrigues Lapa traçou muito pormenorizadamente da vida do poeta, é de suas relações com os poemas, especificando, em notas de pé de página, cada caso referido no estabelecimento dessas relações.
-        Recomendado o trabalho de Rodrigues Lapa a quem deseje, conhecer melhor o poeta e sua obra, continuaremos nosso resumo biográfico, dizendo que, em Vila Rica, Ouro Preto hoje, encontramos sossego e paisagem bucólica para exercício da magistratura  e ofício do poeta que aliada a mestra retórica as leituras que lhe haviam inspirado a tese sobre Direito Natural. 
-        Mas logo a reparada existência de Vila se iria agitar, inquietação pela presença do novo governador, Luiz de Cunha Menezes, que viera de Goiás e ancoraram em Vila Rica, á espera de que seu antecessor sarasse de um andaço de bexigas, a interferir na burocracia de governo. Este Luiz de Cunha Menezes era brutal ao seu autoritarismo e o próprio Gonzaga registra que, para o governador, o poder que se achava investido era “supremo”, arrebatou um condenado à morte das mãos da justiça, dava contratos aos seus afilhados, ainda que sem abono; acusava Ouvidor poeta, revidando as acusações deste. Situação difícil aparecem, anônimas as Cartas Chilenas, em versos de metro impecável , o Governador Menezes se reconhece retratado em Minésio, o Fanfarrão Minésio, e como opressor fica irritadíssimo, “devia escabujar de raiva”, diz o biógrafo do poeta.
-        Lavra a inconfidência, e, com os outros poetas da Província, Gonzaga nela se inclui. Sem dinamismo, dando-lhe, porém, o apoio de sua autoridade e cultura. Continuam as turras com o governador violento, até que chegaram as notícias de que o novo administrador virá para Vila Rica. Ainda mais: o novo governador e Visconde de Barbacena, amigo do poeta.
-        E em que andavam os amores de Gonzaga? Em casa do Dr. Bernardo da Silva. Serão conhecera-lhe uma sobrinha, Maria Dorotéia, dezessete anos em flor. O poeta quarentão foi tocado pela beleza da mocinha. Estava bem que a beleza se unisse ao talento. “Minha Marília,/ se tens beleza,/ da natureza/ e um favor,/ mas aos nós vindouros/ teu nome passa,/ e só por graça/ do deus do amor/ que terno inflama/ a mente, o peito/ do teu pastor.
-        Ama, tem ciúmes, orgulho de sua poesia. Em 1787 já estava noivo de Marília, vencendo relutâncias da família. No ano seguinte, o Visconde de Barbacena toma posse, e, logo depois, serve de padrinho de casamento.
-        Nomeado para a Bahia, parece que Gonzaga foi adiando a partida, pediu licença para a Rainha para casar-se, embora legalmente desnecessária. Até que ponto amor é política teriam incluído no adiamento?
-        De repente as coisas se precipitaram. Denunciados os inconfidência, começam as prisões; Gonzaga, entre eles, vem para o Rio, fica preso na Ilha das Cobras, depois na Ordem Terceira do Santo Antônio, de onde parte para Moçambique. Exílio não muito cruel, pois lá conseguiu impor-se, fez-se importante a força de talento, cultura e ousadia. Morreu na Riqueza, casado com uma analfabeta endinheirada. O que lhe diminuiu a imagem para os sentimentais, que preferiram chorar enternecidamente sobre a miséria, abandono e, principalmente, fidelidade a Marília. Mas não importa o final burguês de Gonzaga. Sua personalidade literária, a que, unicamente, o preservou do esquecimento, está desligada dos outros lugares que não Vila Rica, Ouro aqueles em que se estende a sombra do amor de Marília, como as prisões do Rio de Janeiro.
-        Ficou a poesia de Dirceu, fazendo esquecer as atitudes excêntricas do prisioneiro, a fingir descabidas ignorâncias, a tibieza do iniciado ante juízes, “aos quais procuravam naturalmente ocultar o seu brasileirismo, que mais comprometeria”;  atitudes de desprezo ao “pobre sem respeito e louco” que, impiedosamente, ele propõe seja preso e entregue “para dele zombar a moça gente”. Máculas, que se dissolvem  no verde azul dos idílios.
-        O poeta já viajará, não mais junto com a bem amada, chegando em Lisboa, revendo o pai, que recebe Marília “nos braços a sustentada/ da-lhe de filha o nome/ beija-lhe a sua branca face”. A viagem será como a do “ Triste Avalor” de Bernardim Ribeiro, que parte é “não sabe se há de tornar”, “Que frias eram as águas/ Quem as haverá de passar/ Frias são as águas, frias/ Ninguém nas pode passar;/ Senão quem a vontade pôs/ Donde a não pode tirar”.
-        </p>
-        <p>Importância</p>
-        <p>
-        Marília de Dirceu é a obra-prima do Arcadismo brasileiro e um dos poemas mais importantes da nossa literatura por ter a principal ideia dos clássicos do século XVIII e ao mesmo tempo abrir caminhos para a sensibilidade que marcaria o Romantismo. 
-        Liras
-        Lira I
-        Eu, Marília, não sou algum vaqueiro,
-        Que viva de guardar alheio gado;
-        De tosco trato, d’expressões grosseiro,
-        Dos frios gelos, e dos sóis queimado.
-        Tenho próprio casal, e nele assisto;
-        Dá-me vinho, legume, fruta, azeite;
-        Das brancas ovelhinhas tiro o leite,
-        E mais as finas lãs, de que me visto.
-        Lira II
-        Pintam, Marília, os Poetas
-        A um menino vendado,
-        Com  uma aljada de setas,
-        Arco empunhado na mão;
-        Ligeiras asas nos ombros,
-        O tenro corpo despido,
-        E de Amor, ou de Cupido
-        São os nomes, que lhe dão.
-        Lira XV
-        A minha bela Marília
-        Tem de seu um bom tesouro;
-        Não é, doce Alceu, formado
-        Do buscado | 40 |
-        Metal louro.
-        É feito de uns alvos dentes,
-        É feito de uns olhos belos,
-        De umas faces graciosas,
-        De crespos, finos cabelos,
-        E de outras graças maiores
-        Que a natureza lhe deu:
-        Bens que valem sobre a terra
-        E que têm valor no Céu.
-        Lira XI
-        Não toques, minha Musa, não, não toques
-        Na sonorosa Lira,
-        Que às almas, como a minha, namoradas
-        Doces canções inspira:
-        Assopra no clarim, que apenas soa,
-        Enche de assombro a terra!
-        Naquele, a cujo som cantou Homero,
-        Cantou Virgílio a Guerra.</p>
-        <p>Bucolismo</p>
-        <p>O Bucolismo é um estilo literário e artístico que tem como principal ideia de uma vida simples no campo, a simplicidade dos costumes e o contato pacífico com a natureza.
-        Principais Características
-        Vida no campo: Valoriza o ambiente rural, os prados, os rios e os animais.
-        .Simplicidade: Mostra costumes puros, ingênuos e livres de ganância.
-        Paz e harmonia: Apresenta a natureza como um lugar de descanso para a mente.
-        Rejeição à cidade: Critica o barulho, os problemas e a correria dos centros urbanos. [1, 2, 3, 4, 5]</p>
-        <p>Arcadismo</p>
-        <p>O Arcadismo ocorreu durante a segunda metade do século XVIII, um período de transformações políticas, sociais e científicas no ocidente. O movimento reflete a transição para o mundo moderno, impulsionado pela ascensão da burguesia e pelo declínio do absolutismo.
-        Autores e obras:
-        Cláudio Manuel da Costa: Obras Poéticas (1768)
+        <p class="author-tag">Por: Kelvin</p>
 
-        Basílio da Gama:
-        O Uraguai (1769)
+        <div class="hero-img-container">
+            <!-- URL de imagem pública sobre Tomás Antônio Gonzaga / Marília de Dirceu -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Tomas_Antonio_Gonzaga.jpg/400px-Tomas_Antonio_Gonzaga.jpg" alt="Tomás Antônio Gonzaga - Marília de Dirceu">
+        </div>
 
-        Frei Santa Rita Durão:
-        Caramuru (1781)
+        <p><em>Marília de Dirceu</em> é a obra mais famosa do Arcadismo brasileiro, escrita no século XVIII por Tomás Antônio Gonzaga. A obra reúne poemas líricos que retratam o amor entre o pastor Dirceu e a jovem Marília (inspirada em Maria Dorotéia de Seixas).</p> 
 
-        Tomás Antônio Gonzaga:
-        Marília de Dirceu (1792)</p>
+        <h2>Biografia do Autor</h2>
+        <p><strong>Escrito por:</strong> M. Cavalcanti Proença</p>
+        <p>Tomás Antônio Gonzaga (1744-1809) nasceu na cidade do Porto, Portugal. Seu pai era um magistrado brasileiro, e sua mãe, portuguesa. Com apenas um ano tornou-se órfão de mãe, ficando sob os cuidados de parentes. Aos sete anos veio para o Brasil, onde estudou em um Colégio Jesuíta, formando-se mais tarde em Direito na Universidade de Coimbra.</p>
+        <p>Nomeado ouvidor da comarca de Vila Rica (atual Ouro Preto), foi para Minas Gerais. Envolveu-se na Inconfidência Mineira junto com outros poetas e intelectuais da época. Preso no Rio de Janeiro, foi posteriormente degredado para Moçambique, onde viveu até o fim de sua vida.</p>
 
-        <p>Fim
-        Obrigado por ter visto nosso trabalho, nós tentamos falar sobre a obra e o autor e foi isso que deu.</p>
-        <button>❤️<span>0</span></button>
-   </div> 
-</main>
+        <h2>Importância da Obra</h2>
+        <p><em>Marília de Dirceu</em> é considerada a obra-prima do Arcadismo brasileiro e um dos momentos mais importantes da nossa literatura. Ela traduz os ideais clássicos do século XVIII ao mesmo tempo em que abre caminhos para a pré-sensibilidade do Romantismo.</p>
+
+        <h2>Liras Selecionadas</h2>
+        
+        <div class="poem-block">
+<strong>Lira I</strong>
+Eu, Marília, não sou algum vaqueiro,
+Que viva de guardar alheio gado;
+De tosco trato, d’expressões grosseiro,
+Dos frios gelos, e dos sóis queimado.
+Tenho próprio casal, e nele assisto;
+Dá-me vinho, legume, fruta, azeite;
+Das brancas ovelhinhas tiro o leite,
+E mais as finas lãs, de que me visto.
+        </div>
+
+        <div class="poem-block">
+<strong>Lira II</strong>
+Pintam, Marília, os Poetas
+A um menino vendado,
+Com uma aljava de setas,
+Arco empunhado na mão;
+Ligeiras asas nos ombros,
+O tenro corpo despido,
+E de Amor, ou de Cupido
+São os nomes, que lhe dão.
+        </div>
+
+        <h2>Bucolismo</h2>
+        <p>O Bucolismo é um estilo literário e artístico que tem como conceito central a busca pela vida simples no campo, o elogio à rotina pastoral e o contato harmonioso com a natureza.</p>
+        
+        <p><strong>Principais Características:</strong></p>
+        <ul>
+            <li><strong>Vida no campo:</strong> Valorização do ambiente rural, dos prados, rios e animais.</li>
+            <li><strong>Simplicidade:</strong> Culto aos costumes puros e livres da ganância urbana.</li>
+            <li><strong>Paz e harmonia:</strong> A natureza vista como um refúgio para o descanso da alma.</li>
+            <li><strong>Fugere urbem:</strong> Rejeição à agitação e aos problemas dos centros urbanos.</li>
+        </ul>
+
+        <h2>Arcadismo</h2>
+        <p>O Arcadismo ocorreu na segunda metade do século XVIII, marcado pela ascensão do Iluminismo e pelas transformações sociais e científicas. Na literatura brasileira, destaca-se por autores e obras emblemáticas:</p>
+        
+        <ul>
+            <li><strong>Cláudio Manuel da Costa:</strong> <em>Obras Poéticas</em> (1768)</li>
+            <li><strong>Basílio da Gama:</strong> <em>O Uraguai</em> (1769)</li>
+            <li><strong>Frei Santa Rita Durão:</strong> <em>Caramuru</em> (1781)</li>
+            <li><strong>Tomás Antônio Gonzaga:</strong> <em>Marília de Dirceu</em> (1792)</li>
+        </ul>
+
+        <p class="footer-note">Obrigado por visualizar o nosso trabalho!</p>
+
+        <!-- Seção de Reações (Like / Dislike) -->
+        <div class="feedback-section">
+            <button id="likeBtn" class="reaction-btn">
+                ❤️ <span id="likeCount">0</span>
+            </button>
+            <button id="dislikeBtn" class="reaction-btn">
+                👎 <span id="dislikeCount">0</span>
+            </button>
+        </div>
+    </main>
+
     <script>
-        const botao = document.querySelector("button");
-        botao.addEventListener("click", botaoClicado);
+        const likeBtn = document.getElementById("likeBtn");
+        const dislikeBtn = document.getElementById("dislikeBtn");
+        const likeCount = document.getElementById("likeCount");
+        const dislikeCount = document.getElementById("dislikeCount");
 
-        function botaoClicado() {
-        console.log("fui clicado");
-        let texto = botao.querySelector("span");
-        texto.textContent++;
-}
+        let isLiked = false;
+        let isDisliked = false;
+
+        likeBtn.addEventListener("click", () => {
+            if (isLiked) {
+                isLiked = false;
+                likeCount.textContent = "0";
+                likeBtn.classList.remove("active-like");
+            } else {
+                isLiked = true;
+                likeCount.textContent = "1";
+                likeBtn.classList.add("active-like");
+
+                if (isDisliked) {
+                    isDisliked = false;
+                    dislikeCount.textContent = "0";
+                    dislikeBtn.classList.remove("active-dislike");
+                }
+            }
+        });
+
+        dislikeBtn.addEventListener("click", () => {
+            if (isDisliked) {
+                isDisliked = false;
+                dislikeCount.textContent = "0";
+                dislikeBtn.classList.remove("active-dislike");
+            } else {
+                isDisliked = true;
+                dislikeCount.textContent = "1";
+                dislikeBtn.classList.add("active-dislike");
+
+                if (isLiked) {
+                    isLiked = false;
+                    likeCount.textContent = "0";
+                    likeBtn.classList.remove("active-like");
+                }
+            }
+        });
     </script>
 
 </body>
